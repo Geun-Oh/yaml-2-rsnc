@@ -1,11 +1,7 @@
-import Flex from './Flex';
-import Box from './Box';
-import Text from './Text';
+import rsnc from 'rsnc';
 
 const Components = {
-    Flex,
-    Box,
-    Text,
+    ...rsnc
 };
 
 export default Components;
