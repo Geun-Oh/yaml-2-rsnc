@@ -1,6 +1,7 @@
 import Components from './src/components/components';
 import json from './dst.json';
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 export interface Idst {
     component: keyof typeof Components;
@@ -63,7 +64,6 @@ export const RenderComponent = () => {
  * @returns jsx컴포넌트가 반환됩니다.
  */
 const RenderDst = ({ component, attribute, children }: Idst, index?: number) => {
-    console.log(component, attribute, children);
     if (component === "Flex" || component === "Box") {
         const componentName: keyof typeof Components = component
         const C = Components[componentName]
@@ -75,10 +75,11 @@ const RenderDst = ({ component, attribute, children }: Idst, index?: number) => 
         )
     } else {
         const componentName: keyof typeof Components = component
-        const C = Components[componentName]
+        type types = (a: any) => any;
+        const C: types = Components[componentName]
         const a = attribute !== undefined ? attribute[0] : [];
         return (
-            <C {...a} key={index} />
+            <C {...a} />
         )
     }
 }
